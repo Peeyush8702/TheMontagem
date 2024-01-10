@@ -114,7 +114,7 @@ h3{
     flex-direction: column;
     align-items: center;
     border:1px solid gray;
-    background: rgba(255, 75, 255, 0.1);
+    background: rgba(255, 255, 255);
     box-shadow: 0 8px 40px 0 rgba(45, 57, 231, 0.37);
     backdrop-filter: blur( 4px );
     -webkit-backdrop-filter: blur( 4px );
