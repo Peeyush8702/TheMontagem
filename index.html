@@ -1,12 +1,84 @@
-<html>
-    <head>
-        <title>
-            The Hurricane
-        </title>
-        
-    </head>
-    <body>
-        <div> <span> img src='./monta.jpg'</span></div>
-    </body>
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome</title>
+  <style>
+    /* Preloader styling */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #121212;
+      color: #00ffcc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Courier New', monospace;
+      z-index: 9999;
+      transition: opacity 1s ease;
+    }
+
+    #preloader.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    /* Typewriter cursor effect */
+    #typewriter::after {
+      content: '|';
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    #main-content {
+      display: none;
+      padding: 20px;
+      font-family: sans-serif;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="preloader">
+    <h1 id="typewriter"></h1>
+  </div>
+
+  <div id="main-content">
+    <h2>You're in!</h2>
+    <p>This is the main content of your website.</p>
+  </div>
+
+  <script>
+    const text = "Welcome";
+    const typewriter = document.getElementById("typewriter");
+    let index = 0;
+
+    function type() {
+      if (index < text.length) {
+        typewriter.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 150);
+      } else {
+        // After typing, fade out preloader and show content
+        setTimeout(() => {
+          document.getElementById("preloader").classList.add("fade-out");
+          setTimeout(() => {
+            document.getElementById("preloader").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+          }, 1000);
+        }, 500);
+      }
+    }
+
+    window.addEventListener('load', type);
+  </script>
+</body>
 </html>
